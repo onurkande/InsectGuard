@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SineklikCi - Video Galeri</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3F4448;
+            --primary-dark: #2A2E32;
+            --primary-light: #5A6166;
+            --secondary-color: #4A4F54;
+            --text-color: #2C2F33;
+            --light-text: #6B7074;
+            --white: #FFFFFF;
+            --light-bg: #F5F6F7;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline-light {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0;
+            text-transform: none;
+            letter-spacing: 0;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .btn-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .btn-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 15px 0;
+            transition: var(--transition);
+            background-color: transparent;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .navbar-toggler {
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: black;
+        }
+
+        .btn-contact {
+            background-color: var(--primary-color);
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-left: 15px;
+        }
+
+        .btn-contact:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-contact:after {
+            display: none;
+        }
+
+        /* Video Hero Section */
+        .video-hero {
+            background-color: #212529;
+            color: var(--white);
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .video-hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .video-hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Video Gallery */
+        .video-gallery {
+            padding: 80px 0;
+        }
+
+        .video-gallery .col-md-6{
+            margin-bottom: 30px;
+        }
+
+        .video-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            opacity: 0.9;
+            z-index: 1;
+        }
+
+        .video-play-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            animation: pulse 2s infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+            70% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        .video-card:hover .video-play-btn {
+            background-color: var(--primary-color);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-content {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .video-description {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--light-text);
+        }
+
+        .video-date {
+            display: flex;
+            align-items: center;
+        }
+
+        .video-date i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        .video-duration {
+            display: flex;
+            align-items: center;
+        }
+
+        .video-duration i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        .video-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        /* Video Modal */
+        .video-modal .modal-content {
+            background-color: transparent;
+            border: none;
+        }
+
+        .video-modal .modal-header {
+            border: none;
+            padding: 0;
+            position: relative;
+        }
+
+        .video-modal .close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--white);
+            opacity: 1;
+            text-shadow: none;
+            font-size: 2rem;
+            z-index: 1;
+            background: none;
+            border: none;
+        }
+
+        .video-modal .modal-body {
+            padding: 0;
+        }
+
+        .video-modal .ratio {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        /* CTA Section */
+        .video-cta {
+            background: linear-gradient(135deg, rgba(63, 68, 72, 0.9) 0%, rgba(42, 46, 50, 0.9) 100%), url('https://sineklikci.net/wp-content/uploads/2025/04/modern-sineklik-hero.jpg') no-repeat center center/cover;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .video-cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .video-cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 80px 0 0;
+        }
+
+        .footer-logo {
+            height: 40px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .footer h4 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer h4:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .footer-contact li i {
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        .footer-contact a {
+            color: #ccc;
+        }
+
+        .footer-contact a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+        }
+
+        .footer-bottom a {
+            color: var(--primary-color);
+        }
+
+        /* Float Buttons */
+        .whatsapp-float,
+        .call-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .call-float {
+            bottom: 110px;
+            background-color: var(--primary-color);
+        }
+
+        .whatsapp-float:hover,
+        .call-float:hover {
+            transform: scale(1.1);
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .section-padding {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .video-hero {
+                padding: 150px 0 80px;
+            }
+            
+            .video-hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .navbar-collapse {
+                background-color: var(--white);
+                padding: 20px;
+                border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow);
+                margin-top: 15px;
+            }
+            
+            .nav-link {
+                margin: 10px 0;
+            }
+            
+            .btn-contact {
+                margin-left: 0;
+                margin-top: 10px;
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .section-padding {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .video-hero {
+                padding: 120px 0 60px;
+            }
+            
+            .video-hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .video-hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .video-cta-title {
+                font-size: 1.8rem;
+            }
+            
+            .whatsapp-float,
+            .call-float {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                right: 20px;
+            }
+            
+            .call-float {
+                bottom: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://sineklikci.net/wp-content/uploads/2025/04/logo-2.png" alt="SineklikCi Logo" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">Hakkımızda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Ürünlerimiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#why-us">Neden Biz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#examples">İşlerimiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="videos.html">Videolar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#faq">SSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-contact" href="index.html#contact">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Video Hero Section -->
+    <section class="video-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="video-hero-content">
+                        <h1 class="video-hero-title">Sineklik Sistemlerini Tanıyın</h1>
+                        <p class="video-hero-subtitle">Özel çözümlerimizi tanıtan videoları izleyerek bilgi edinin. Gerçek işler, gerçek sonuçlar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section class="video-gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <div class="section-header">
+                        <h2 class="section-title">Video <span>Galerimiz</span></h2>
+                        <p class="section-subtitle">Sineklik çözümlerimizi, montaj süreçlerini ve müşteri deneyimlerini anlatan videolarımızı keşfedin.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Video 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Montaj</div>
+                            <img src="https://i.ytimg.com/vi/qRedtz_UJTY/maxresdefault.jpg" alt="Sineklik Montaj Videosu">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal1">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Kapı Sinekliği Montaj Süreci</h3>
+                            <p class="video-description">Bu videoda, profesyonel ekibimizin kapı sinekliği montaj sürecini adım adım görebilirsiniz. Kaliteli malzeme ve uzman işçilik ile sorunsuz bir montaj.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>15 Mayıs 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>4:32</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Ürün Tanıtımı</div>
+                            <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Pileli Sineklik Tanıtımı">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal2">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Pileli Sineklik Sistemleri</h3>
+                            <p class="video-description">Modern tasarımı ve kullanım kolaylığı ile öne çıkan pileli sineklik sistemlerimizi yakından tanıyın. Farklı renk ve boyut seçenekleri ile her mekana uygun çözümler.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>2 Mayıs 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>3:45</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Müşteri Deneyimi</div>
+                            <img src="https://i.ytimg.com/vi/jNQXAC9IVRw/maxresdefault.jpg" alt="Müşteri Deneyimi">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal3">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Müşteri Memnuniyeti Hikayeleri</h3>
+                            <p class="video-description">Memnun müşterilerimizin sineklik deneyimlerini ve memnuniyetlerini anlattıkları röportajlar. Gerçek müşteriler, gerçek deneyimler.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>28 Nisan 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>5:18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Özel Çözümler</div>
+                            <img src="https://i.ytimg.com/vi/9bZkp7q19f0/maxresdefault.jpg" alt="Kedi Sinekliği">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal4">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Kedi Sinekliği Çözümleri</h3>
+                            <p class="video-description">Evcil dostlarınız için özel tasarlanmış kedi sinekliği çözümlerimizi keşfedin. Hem kedileriniz özgürce dolaşsın hem de eviniz haşerelerden korunsun.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>20 Nisan 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>4:05</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Bakım</div>
+                            <img src="https://i.ytimg.com/vi/kJQP7kiw5Fk/maxresdefault.jpg" alt="Sineklik Bakımı">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal5">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Sineklik Bakım ve Temizliği</h3>
+                            <p class="video-description">Sinekliklerinizin ömrünü uzatmak için doğru bakım ve temizlik yöntemlerini öğrenin. Basit adımlarla sinekliklerinizi ilk günkü gibi temiz tutun.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>12 Nisan 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>3:22</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Proje</div>
+                            <img src="https://i.ytimg.com/vi/pRpeEdMmmQ0/maxresdefault.jpg" alt="Büyük Proje">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal6">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Büyük Ölçekli Projelerimiz</h3>
+                            <p class="video-description">Otel, restoran ve iş yerleri için gerçekleştirdiğimiz büyük ölçekli sineklik projelerimizi inceleyin. Profesyonel çözümler, kusursuz uygulama.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>5 Nisan 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>6:14</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 7 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Ürün Tanıtımı</div>
+                            <img src="https://i.ytimg.com/vi/fJ9rUzIMcZQ/maxresdefault.jpg" alt="Sürme Sineklik">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal7">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Sürme Sineklik Sistemleri</h3>
+                            <p class="video-description">Geniş açıklıklar için ideal olan sürme sineklik sistemlerimizi tanıyın. Kolay kullanım, şık tasarım ve uzun ömürlü çözümler.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>28 Mart 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>4:42</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 8 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Montaj</div>
+                            <img src="https://i.ytimg.com/vi/JGwWNGJdvx8/maxresdefault.jpg" alt="Pencere Sinekliği Montajı">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal8">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Pencere Sinekliği Montajı</h3>
+                            <p class="video-description">Pencere sinekliği montaj sürecini adım adım izleyin. Profesyonel ekibimizin hızlı ve titiz çalışmasıyla kusursuz sonuçlar elde edin.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>20 Mart 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>3:58</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 9 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="video-category">Özel Çözümler</div>
+                            <img src="https://i.ytimg.com/vi/OPf0YbXqDm0/maxresdefault.jpg" alt="Özel Tasarım Sineklikler">
+                            <a href="#" class="video-play-btn" data-bs-toggle="modal" data-bs-target="#videoModal9">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Özel Tasarım Sineklikler</h3>
+                            <p class="video-description">Standart dışı pencere ve kapılar için özel tasarladığımız sineklik çözümlerimizi keşfedin. Her mekana uygun, özel üretim sineklikler.</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>15 Mart 2025</span>
+                                </div>
+                                <div class="video-duration">
+                                    <i class="far fa-clock"></i>
+                                    <span>5:27</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video CTA Section -->
+    <section class="video-cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="video-cta-title">Çözümlerimizi Beğendiniz mi?</h2>
+                    <p class="video-cta-text">Sizin için de aynısını yapabiliriz. Profesyonel ekibimiz, ihtiyaçlarınıza en uygun sineklik çözümlerini sunmak için hazır. Ücretsiz keşif ve fiyat teklifi için hemen bizi arayın.</p>
+                    <a href="index.html#contact" class="btn btn-light">Hemen Teklif Alın</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://via.placeholder.com/150x50/4CAF50/FFFFFF?text=SineklikCi" alt="SineklikCi Logo" class="footer-logo mb-4">
+                    <p>Ankara'nın tüm ilçelerinde profesyonel sineklik hizmetleri sunuyoruz. Kaliteli malzeme, uygun fiyat ve uzman ekibimizle hizmetinizdeyiz.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>Hızlı Linkler</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="index.html#about">Hakkımızda</a></li>
+                        <li><a href="products.html">Ürünlerimiz</a></li>
+                        <li><a href="index.html#why-us">Neden Biz</a></li>
+                        <li><a href="index.html#examples">İşlerimiz</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>Ürünlerimiz</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Kapı Sinekliği</a></li>
+                        <li><a href="#">Pencere Sinekliği</a></li>
+                        <li><a href="#">Pileli Sineklik</a></li>
+                        <li><a href="#">Kedi Sinekliği</a></li>
+                        <li><a href="#">Sürme Sineklik</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4>İletişim</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Ankara, Türkiye</li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+905001234567">+90 500 123 45 67</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@sineklikci.com">info@sineklikci.com</a></li>
+                        <li><i class="fas fa-clock"></i> Pazartesi - Cumartesi: 09:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 SineklikCi. Tüm Hakları Saklıdır.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Web Tasarım: <a href="#">Modern Web</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/905001234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Call Float Button -->
+    <a href="tel:+905001234567" class="call-float">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <!-- Video Modals -->
+    <!-- Video Modal 1 -->
+    <div class="modal fade video-modal" id="videoModal1" tabindex="-1" aria-labelledby="videoModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/qRedtz_UJTY" title="Kapı Sinekliği Montaj Süreci" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal 2 -->
+    <div class="modal fade video-modal" id="videoModal2" tabindex="-1" aria-labelledby="videoModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Pileli Sineklik Sistemleri" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal 3 -->
+    <div class="modal fade video-modal" id="videoModal3" tabindex="-1" aria-labelledby="videoModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/jNQXAC9IVRw" title="Müşteri Memnuniyeti Hikayeleri" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal 4 -->
+    <div class="modal fade video-modal" id="videoModal4" tabindex="-1" aria-labelledby="videoModal4Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/9bZkp7q19f0" title="Kedi Sinekliği Çözümleri" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal 5 -->
+    <div class="modal fade video-modal" id="videoModal5" tabindex="-1" aria-labelledby="videoModal5Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/kJQP7kiw5Fk" title="Sineklik Bakım ve Temizliği" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal 6 -->
+    <div class="modal fade video-modal" id="videoModal6" tabindex="-1" aria-labelledby="videoModal6Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/pRpeEdMmmQ0" title="Büyük Ölçekli Projelerimiz" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal 7 -->
+    <div class="modal fade video-modal" id="videoModal7" tabindex="-1" aria-labelledby="videoModal7Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/fJ9rUzIMcZQ" title="Sürme Sineklik Sistemleri" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal 8 -->
+    <div class="modal fade video-modal" id="videoModal8" tabindex="-1" aria-labelledby="videoModal8Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/JGwWNGJdvx8" title="Pencere Sinekliği Montajı" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal 9 -->
+    <div class="modal fade video-modal" id="videoModal9" tabindex="-1" aria-labelledby="videoModal9Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/OPf0YbXqDm0" title="Özel Tasarım Sineklikler" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            document.querySelector('.navbar-toggler').click();
+                        }
+                    }
+                });
+            });
+            
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.video-card');
+            
+            // Initial check for elements in viewport
+            checkElementsInViewport();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkElementsInViewport);
+            
+            function checkElementsInViewport() {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition.top < windowHeight * 0.9) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Initialize elements with opacity 0 and translateY
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Stop YouTube videos when modal is closed
+            const videoModals = document.querySelectorAll('.video-modal');
+            videoModals.forEach(modal => {
+                modal.addEventListener('hidden.bs.modal', function() {
+                    const iframe = this.querySelector('iframe');
+                    const iframeSrc = iframe.src;
+                    iframe.src = iframeSrc;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SineklikCi - Ürünlerimiz</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #3F4448;
+            --primary-dark: #2A2E32;
+            --primary-light: #5A6166;
+            --secondary-color: #4A4F54;
+            --text-color: #2C2F33;
+            --light-text: #6B7074;
+            --white: #FFFFFF;
+            --light-bg: #F5F6F7;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .bg-light {
+            background-color: var(--light-bg);
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline-light {
+            border-color: var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        .btn-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 0;
+            text-transform: none;
+            letter-spacing: 0;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .btn-link i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .btn-link:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Navbar */
+        .navbar {
+            padding: 15px 0;
+            transition: var(--transition);
+            background-color: transparent;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .navbar-toggler {
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: black;
+        }
+
+        .btn-contact {
+            background-color: var(--primary-color);
+            color: var(--white) !important;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-left: 15px;
+        }
+
+        .btn-contact:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-contact:after {
+            display: none;
+        }
+
+        /* Page Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(101, 67, 33, 0.95) 0%, rgba(67, 44, 22, 0.95) 100%), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            padding: 120px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .page-hero-title {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .page-hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Product Card */
+        .product-grid {
+            padding: 80px 0;
+        }
+
+        .product-filter {
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            margin: 0 5px 10px;
+            border-radius: 30px;
+            background-color: var(--white);
+            color: var(--text-color);
+            border: 1px solid #e1e1e1;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .product-item {
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-tag {
+            display: none;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .product-desc {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .product-features {
+            margin-bottom: 20px;
+        }
+
+        .product-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .product-feature i {
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+
+        .product-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        /* Pagination */
+        .pagination-container {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagination {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .page-item {
+            margin: 0 5px;
+        }
+
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--text-color);
+            border: 1px solid #e1e1e1;
+            transition: var(--transition);
+        }
+
+        .page-link:hover,
+        .page-item.active .page-link {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .page-item.disabled .page-link {
+            color: #ccc;
+            pointer-events: none;
+        }
+
+        /* Mini CTA */
+        .mini-cta {
+            background-color: var(--primary-color);
+            padding: 60px 0;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .mini-cta-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .mini-cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 80px 0 0;
+        }
+
+        .footer-logo {
+            height: 40px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .footer h4 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer h4:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .footer-contact li i {
+            margin-right: 15px;
+            color: var(--primary-color);
+        }
+
+        .footer-contact a {
+            color: #ccc;
+        }
+
+        .footer-contact a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            margin-top: 60px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+        }
+
+        .footer-bottom a {
+            color: var(--primary-color);
+        }
+
+        /* Float Buttons */
+        .whatsapp-float,
+        .call-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .call-float {
+            bottom: 110px;
+            background-color: var(--primary-color);
+        }
+
+        .whatsapp-float:hover,
+        .call-float:hover {
+            transform: scale(1.1);
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .section-padding {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .page-hero {
+                padding: 100px 0 50px;
+            }
+            
+            .page-hero-title {
+                font-size: 2rem;
+            }
+            
+            .navbar-collapse {
+                background-color: var(--white);
+                padding: 20px;
+                border-radius: var(--border-radius);
+                box-shadow: var(--box-shadow);
+                margin-top: 15px;
+            }
+            
+            .nav-link {
+                margin: 10px 0;
+            }
+            
+            .btn-contact {
+                margin-left: 0;
+                margin-top: 10px;
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .section-padding {
+                padding: 50px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .page-hero {
+                padding: 80px 0 40px;
+            }
+            
+            .page-hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .mini-cta-title {
+                font-size: 1.6rem;
+            }
+            
+            .whatsapp-float,
+            .call-float {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                right: 20px;
+            }
+            
+            .call-float {
+                bottom: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://sineklikci.net/wp-content/uploads/2025/04/logo-2.png" alt="SineklikCi Logo" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">Hakkımızda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Ürünlerimiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#why-us">Neden Biz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#examples">İşlerimiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#testimonials">Referanslar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#faq">SSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-contact" href="index.html#contact">İletişim</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-hero-content">
+                        <h1 class="page-hero-title">Tüm Sineklik Modellerimizi Keşfedin</h1>
+                        <p class="page-hero-subtitle">Eviniz ve iş yeriniz için en uygun, kaliteli sineklik çözümleri. İhtiyaçlarınıza göre filtreleyip, size en uygun modeli hemen bulun.</p>
+                        <a href="#contact" class="btn btn-primary">Hemen Teklif Alın</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="product-grid">
+        <div class="container">
+            <!-- Products Grid -->
+            <div class="row product-container">
+                <!-- Product 1 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="door">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://productimages.hepsiburada.net/s/416/375-375/110000445137367.jpg" alt="Menteşeli Kapı Sinekliği">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Menteşeli Kapı Sinekliği</h3>
+                            <p class="product-desc">Klasik ve dayanıklı tasarımıyla kapılarınız için ideal çözüm.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay açılıp kapanma</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Yüksek dayanıklılık</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Farklı renk seçenekleri</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="door">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://ankaracankayasineklik.com/wp-content/uploads/2022/05/surgulu-kapi-sinekligi.jpg" alt="Sürgülü Kapı Sinekliği">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Sürgülü Kapı Sinekliği</h3>
+                            <p class="product-desc">Yer tasarrufu sağlayan, modern tasarımlı sürgülü kapı sinekliği.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Sessiz çalışma mekanizması</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay montaj</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Şık görünüm</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="window">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://www.emsasineklik.com/wp-content/uploads/2020/12/icten-takma-pileli-sineklik.jpg" alt="Sabit Pencere Sinekliği">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Sabit Pencere Sinekliği</h3>
+                            <p class="product-desc">Ekonomik ve pratik çözüm sunan sabit pencere sinekliği.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Ekonomik fiyat</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay temizlik</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Uzun ömürlü kullanım</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="window">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://avrupasineklik.com/img/urun/Ice-Acilir-Sineklik-Kedi-Sinekligi-7347.jpg" alt="Açılır Pencere Sinekliği">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Açılır Pencere Sinekliği</h3>
+                            <p class="product-desc">Kolay açılıp kapanabilen, pratik pencere sinekliği.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay kullanım</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Dayanıklı malzeme</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Çeşitli boyut seçenekleri</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="pleated">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://banergrup.com/wp-content/uploads/2021/05/dizayn-plus-plise-sineklik-03.jpg" alt="Pileli Sineklik">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Pileli Sineklik</h3>
+                            <p class="product-desc">Modern tasarımı ve kolay kullanımıyla öne çıkan pileli sineklik.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Şık görünüm</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay açılıp kapanma</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Uzun ömürlü kullanım</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="pet">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://www.istanbulkedisinekligi.com/public/uploads/pliselikedisineklii.jpg" alt="Kedi Sinekliği">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Kedi Sinekliği</h3>
+                            <p class="product-desc">Evcil dostlarınızın rahatça giriş çıkış yapabileceği özel tasarım.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kedi geçişine uygun</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Dayanıklı malzeme</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay montaj</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="special">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://www.penguencam.com/wp-content/uploads/2024/02/stor-sineklik.jpeg" alt="Stor Sineklik">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Stor Sineklik</h3>
+                            <p class="product-desc">Perde gibi açılıp kapanabilen, kullanışlı stor sineklik modeli.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay kullanım</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Yer tasarrufu</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Modern tasarım</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="special">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://sinax.com.tr/wp-content/uploads/2023/02/2023-tuba-tek.jpg" alt="Sürme Sineklik">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Sürme Sineklik</h3>
+                            <p class="product-desc">Geniş alanlar için ideal, yatay olarak açılıp kapanan sineklik.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Geniş açıklıklar için uygun</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Sessiz çalışma</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay kullanım</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="col-md-6 col-lg-4 product-item" data-category="pet">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://www.tahtakaletoptanticaret.com/image/cache/catalog/product/24242400787/miknatisli-kapi-sinekligi-3-800x800.jpg" alt="Köpek Sinekliği">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Köpek Sinekliği</h3>
+                            <p class="product-desc">Büyük evcil hayvanlarınız için özel tasarlanmış dayanıklı sineklik.</p>
+                            <div class="product-features">
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Ekstra dayanıklı malzeme</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Kolay geçiş</span>
+                                </div>
+                                <div class="product-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>Çeşitli boyut seçenekleri</span>
+                                </div>
+                            </div>
+                            <div class="product-action">
+                                <a href="product-detail.html" class="btn-link">İncele <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="pagination-container">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini CTA Section -->
+    <section class="mini-cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="mini-cta-title">Size en uygun sineklik hangisi?</h2>
+                    <p class="mini-cta-text">İhtiyaçlarınıza en uygun sineklik modelini seçmek için bizimle iletişime geçin. Uzman ekibimiz, en doğru çözümü birlikte belirlesin.</p>
+                    <a href="index.html#contact" class="btn btn-light">Hemen İletişime Geçin</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://via.placeholder.com/150x50/4CAF50/FFFFFF?text=SineklikCi" alt="SineklikCi Logo" class="footer-logo mb-4">
+                    <p>Ankara'nın tüm ilçelerinde profesyonel sineklik hizmetleri sunuyoruz. Kaliteli malzeme, uygun fiyat ve uzman ekibimizle hizmetinizdeyiz.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>Hızlı Linkler</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="index.html#about">Hakkımızda</a></li>
+                        <li><a href="products.html">Ürünlerimiz</a></li>
+                        <li><a href="index.html#why-us">Neden Biz</a></li>
+                        <li><a href="index.html#examples">İşlerimiz</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h4>Ürünlerimiz</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Kapı Sinekliği</a></li>
+                        <li><a href="#">Pencere Sinekliği</a></li>
+                        <li><a href="#">Pileli Sineklik</a></li>
+                        <li><a href="#">Kedi Sinekliği</a></li>
+                        <li><a href="#">Sürme Sineklik</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4>İletişim</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> Ankara, Türkiye</li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+905001234567">+90 500 123 45 67</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@sineklikci.com">info@sineklikci.com</a></li>
+                        <li><i class="fas fa-clock"></i> Pazartesi - Cumartesi: 09:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 SineklikCi. Tüm Hakları Saklıdır.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Web Tasarım: <a href="#">Modern Web</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/905001234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Call Float Button -->
+    <a href="tel:+905001234567" class="call-float">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            document.querySelector('.navbar-toggler').click();
+                        }
+                    }
+                });
+            });
+            
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.product-card');
+            
+            // Initial check for elements in viewport
+            checkElementsInViewport();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkElementsInViewport);
+            
+            function checkElementsInViewport() {
+                animateElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition.top < windowHeight * 0.9) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Initialize elements with opacity 0 and translateY
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+        });
+    </script>
+</body>
+</html>
