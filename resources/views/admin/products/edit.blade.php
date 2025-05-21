@@ -74,6 +74,21 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="icon">İkon</label>
+                            <input type="text" name="icon" id="icon" class="form-control" value="{{ old('icon', $product->icon) }}" placeholder="Örnek: fas fa-cat">
+                            <small class="form-text text-muted">
+                                Font Awesome ikonları kullanabilirsiniz. Örnekler: 
+                                <ul>
+                                    <li>fas fa-cat (kedi ikonu)</li>
+                                    <li>fas fa-dog (köpek ikonu)</li>
+                                    <li>fas fa-home (ev ikonu)</li>
+                                    <li>fas fa-car (araba ikonu)</li>
+                                </ul>
+                                <a href="https://fontawesome.com/icons" target="_blank">Tüm ikonları görmek için tıklayın</a>
+                            </small>
+                        </div>
+
+                        <div class="form-group">
                             <label for="image">Görsel</label>
                             @if($product->image)
                                 <div class="mb-2">

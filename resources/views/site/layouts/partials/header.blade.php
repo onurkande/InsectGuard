@@ -1,8 +1,8 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="https://sineklikci.net/wp-content/uploads/2025/04/logo-2.png" alt="SineklikCi Logo" class="logo">
+        <a class="navbar-brand" href="{{route('index')}}">
+            <img src="{{asset('storage/'.$siteSettings->logo)}}" alt="SineklikCi Logo" class="logo">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -10,19 +10,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Ana Sayfa</a>
+                    <a class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}" href="{{route('index')}}">Ana Sayfa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">Hakkımızda</a>
+                    <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{route('about')}}">Hakkımızda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="products.html">Ürünlerimiz</a>
+                    <a class="nav-link {{ request()->routeIs('products') ? 'active' : '' }}" href="{{route('products')}}">Ürünlerimiz</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="videos.html">Videolar</a>
+                    <a class="nav-link {{ request()->routeIs('videos') ? 'active' : '' }}" href="{{route('videos')}}">Videolar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-contact" href="contact.html">İletişim</a>
+                    <a class="nav-link btn-contact {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{route('contact')}}">İletişim</a>
                 </li>
             </ul>
         </div>

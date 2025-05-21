@@ -35,6 +35,13 @@
             </a>
         </li>
 
+        <li class="nav-item {{ request()->routeIs('admin.counters.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.counters.index') }}">
+                <i class="fas fa-chart-line"></i>
+                <p>Sayaçlar</p>
+            </a>
+        </li>
+
         <li class="nav-item {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
             <a data-bs-toggle="collapse" href="#products">
                 <i class="fas fa-concierge-bell"></i>
@@ -56,6 +63,64 @@
                     </li>
                 </ul>
             </div>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.features.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.features.index') }}">
+                <i class="fas fa-info-circle"></i>
+                <p>Özellikler</p>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.abouts.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.abouts.index') }}">
+                <i class="fas fa-info-circle"></i>
+                <p>Hakkımızda</p>
+            </a>
+        </li>
+
+
+        <li class="nav-item {{ request()->routeIs('admin.videos.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.videos.index') }}">
+                <i class="fas fa-video"></i>
+                <p>Video</p>
+            </a>
+        </li>
+        
+
+        <li class="nav-item {{ request()->routeIs('admin.site-settings.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.site-settings.index') }}">
+                <i class="fas fa-cog"></i>
+                <p>Site Ayarları</p>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.comments.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.comments.index') }}">
+                <i class="fas fa-comments"></i>
+                <p>Yorumlar</p>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.questions.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.questions.index') }}">
+                <i class="fas fa-question-circle"></i>
+                <p>Sıkça Sorulan Sorular</p>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.contacts.index') }}">
+                <i class="fas fa-phone"></i>
+                <p>İletişim</p>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('admin.contact-messages.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.contact-messages.index') }}">
+                <i class="fas fa-envelope"></i>
+                <p>İletişim Mesajları</p>
+            </a>
         </li>
 
 

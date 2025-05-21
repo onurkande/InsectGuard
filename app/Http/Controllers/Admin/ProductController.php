@@ -37,6 +37,7 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'image' => 'required|image',
+            'icon' => 'nullable|string|max:50',
             'desc' => 'required|string',
             'content' => 'required|string',
             'tags' => 'nullable|string',
@@ -55,6 +56,7 @@ class ProductController extends Controller
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'image' => $imagePath,
+            'icon' => $request->icon,
             'desc' => $request->desc,
             'content' => $request->content,
             'tags' => $request->tags,
@@ -93,6 +95,7 @@ class ProductController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'image' => 'nullable|image',
+            'icon' => 'nullable|string|max:50',
             'desc' => 'required|string',
             'content' => 'required|string',
             'tags' => 'nullable|string',
@@ -116,6 +119,7 @@ class ProductController extends Controller
         $product->update([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
+            'icon' => $request->icon,
             'desc' => $request->desc,
             'content' => $request->content,
             'tags' => $request->tags,

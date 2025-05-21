@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Site\ProductController;
+use App\Http\Controllers\Site\IndexController;
+use App\Http\Controllers\Site\AboutController;
+use App\Http\Controllers\Site\VideoController;
+use App\Http\Controllers\Site\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,28 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('site.index');
-});
+Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/iletisim', function () {
-    return view('site.contact');
-});
+Route::get('/iletisim', [ContactController::class, 'index'])->name('contact');
 
-Route::get('/hakkimizda', function () {
-    return view('site.about');
-});
+Route::get('/hakkimizda', [AboutController::class, 'index'])->name('about');
 
-Route::get('/urunler', function () {
-    return view('site.products');
-});
+Route::get('/urunler', [ProductController::class, 'index'])->name('products');
 
-Route::get('/urun-detay', function () {
-    return view('site.product-details');
-});
+Route::get('/urun-detay/{slug}', [ProductController::class, 'show'])->name('product-detail');
 
-Route::get('/videos', function () {
-    return view('site.videos');
-});
+Route::get('/videos', [VideoController::class, 'index'])->name('videos');
+
+Route::post('/contact', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
 
 require __DIR__.'/admin.php';

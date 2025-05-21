@@ -25,12 +25,12 @@
     @include('site.layouts.partials.footer')
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/905001234567" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/{{$contact->telephone}}" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Call Float Button -->
-    <a href="tel:+905001234567" class="call-float">
+    <a href="tel:{{$contact->telephone}}" class="call-float">
         <i class="fas fa-phone-alt"></i>
     </a>
 
