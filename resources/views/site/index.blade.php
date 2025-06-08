@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('site-assets/css/index.css') }}">
 @endsection
 
-@section('title', 'SineklikCi - Modern Fly Screen Solutions')
+@section('title', 'SineklikCi - Modern Sineklik Çözümleri')
 
 @section('content')
     <!-- Hero Section -->
@@ -118,34 +118,32 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-items-center mt-5">
-                <div class="col-lg-6">
-                    <div class="video-wrapper">
-                        <div class="ratio ratio-16x9">
-                            {!! $videos->video_url !!}
+            <div class="row mt-5">
+                @foreach($videos as $video)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <div class="ratio ratio-16x9">
+                                {!! $video->video_url !!}
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">{{$video->title}}</h3>
+                            <p class="video-description">{{$video->description}}</p>
+                            <div class="video-meta">
+                                <div class="video-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    {{$video->created_at->format('d.m.Y')}}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="video-content">
-                        <h3 class="mb-4">Profesyonel Sineklik Çözümleri</h3>
-                        <p class="mb-4">Videolarımızda sineklik çözümlerimizin kalitesini ve montaj sürecini yakından görebilirsiniz. Her video, müşterilerimizin memnuniyetini ve işimizin profesyonelliğini yansıtmaktadır.</p>
-                        <div class="video-features">
-                            <div class="feature-item d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-primary me-3"></i>
-                                <span>Profesyonel Montaj Süreci</span>
-                            </div>
-                            <div class="feature-item d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-primary me-3"></i>
-                                <span>Kaliteli Malzeme Kullanımı</span>
-                            </div>
-                            <div class="feature-item d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-primary me-3"></i>
-                                <span>Müşteri Memnuniyeti</span>
-                            </div>
-                        </div>
-                        <a href="{{route('videos')}}" class="btn btn-primary mt-4">Tüm Videoları İzle</a>
-                    </div>
+                @endforeach
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <a href="{{route('videos')}}" class="btn btn-primary">Tüm Videoları İzle</a>
                 </div>
             </div>
         </div>

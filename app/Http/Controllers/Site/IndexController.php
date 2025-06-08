@@ -28,7 +28,7 @@ class IndexController extends Controller
         $features = Feature::latest()->take(6)->get();
         $feature_settings = FeatureSetting::first();
         $video_settings = VideoSetting::first();
-        $videos = Video::first();
+        $videos = Video::latest()->take(6)->get();
         $comments = Comment::all();
         $comment_settings = CommentSetting::first();
         $questions = Question::all();

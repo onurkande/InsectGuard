@@ -27,11 +27,19 @@
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/{{$contact->telephone}}" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
+        <span class="float-text">WhatsApp Fiyat Al</span>
     </a>
 
     <!-- Call Float Button -->
     <a href="tel:{{$contact->telephone}}" class="call-float">
         <i class="fas fa-phone-alt"></i>
+        <span class="float-text">Telefon</span>
+    </a>
+
+    <!-- Instagram Float Button -->
+    <a href="{{$siteSettings->instagram_url}}" class="instagram-float" target="_blank">
+        <i class="fab fa-instagram"></i>
+        <span class="float-text">Instagram</span>
     </a>
 
     <!-- Bootstrap JS -->

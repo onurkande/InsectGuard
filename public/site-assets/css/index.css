@@ -1,16 +1,15 @@
-
 /* Global Styles */
 :root {
-    --primary-color: #3F4448;
-    --primary-dark: #2A2E32;
-    --primary-light: #5A6166;
-    --secondary-color: #4A4F54;
-    --text-color: #2C2F33;
-    --light-text: #6B7074;
+    --primary-color: #4CAF50;
+    --primary-dark: #388E3C;
+    --primary-light: #A5D6A7;
+    --secondary-color: #2E7D32;
+    --text-color: #333333;
+    --light-text: #666666;
     --white: #FFFFFF;
-    --light-bg: #F5F6F7;
+    --light-bg: #F8F9FA;
     --border-radius: 10px;
-    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     --transition: all 0.3s ease;
 }
 
@@ -204,7 +203,7 @@ a:hover {
 
 /* Hero Section - Updated */
 #hero {
-    background: linear-gradient(135deg, rgba(63, 68, 72, 0.9) 0%, rgba(42, 46, 50, 0.9) 100%), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9) 0%, rgba(56, 142, 60, 0.9) 100%), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
     min-height: 100vh;
     color: var(--white);
     position: relative;
@@ -555,43 +554,92 @@ a:hover {
     margin-bottom: 0;
 }
 
-/* Video Section Styles */
-.video-wrapper {
+/* Video Section */
+.video-card {
+    background-color: var(--white);
     border-radius: var(--border-radius);
-    overflow: hidden;
     box-shadow: var(--box-shadow);
+    overflow: hidden;
     transition: var(--transition);
+    height: 100%;
 }
 
-.video-wrapper:hover {
+.video-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
+.video-thumbnail {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.video-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
 .video-content {
-    padding: 30px;
+    padding: 20px;
 }
 
-.video-content h3 {
+.video-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 600;
     color: var(--text-color);
-    font-size: 1.8rem;
-    margin-bottom: 20px;
 }
 
-.video-content p {
+.video-description {
     color: var(--light-text);
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.video-features .feature-item {
-    color: var(--text-color);
-    font-size: 1.1rem;
+.video-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--light-text);
 }
 
-.video-features .feature-item i {
+.video-date {
+    display: flex;
+    align-items: center;
+}
+
+.video-date i {
+    margin-right: 5px;
     color: var(--primary-color);
-    font-size: 1.2rem;
+}
+
+@media (max-width: 991px) {
+    .video-card {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .video-title {
+        font-size: 1.2rem;
+    }
+    
+    .video-description {
+        font-size: 0.9rem;
+    }
 }
 
 /* Testimonials Section - Updated */
@@ -793,8 +841,6 @@ a:hover {
     overflow: hidden;
 }
 
-
-
 .accordion-item {
     margin-bottom: 15px;
     border: none;
@@ -879,7 +925,7 @@ a:hover {
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, rgba(63, 68, 72, 0.9) 0%, rgba(42, 46, 50, 0.9) 100%), url('https://sineklikci.net/wp-content/uploads/2025/04/modern-sineklik-hero.jpg') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9) 0%, rgba(46, 125, 50, 0.9) 100%), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
     color: var(--white);
 }
 
@@ -1042,10 +1088,11 @@ textarea.form-control {
 
 /* Float Buttons */
 .whatsapp-float,
-.call-float {
+.call-float,
+.instagram-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
+    width: auto;
+    height: 50px;
     bottom: 40px;
     right: 40px;
     background-color: #25d366;
@@ -1059,17 +1106,57 @@ textarea.form-control {
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    padding: 0 20px;
+    text-decoration: none;
 }
 
 .call-float {
-    bottom: 110px;
+    bottom: 100px;
     background-color: var(--primary-color);
 }
 
+.instagram-float {
+    bottom: 160px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.float-text {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+}
+
 .whatsapp-float:hover,
-.call-float:hover {
-    transform: scale(1.1);
+.call-float:hover,
+.instagram-float:hover {
+    transform: scale(1.05);
     color: var(--white);
+}
+
+@media (max-width: 767px) {
+    .whatsapp-float,
+    .call-float,
+    .instagram-float {
+        width: auto;
+        height: 45px;
+        font-size: 18px;
+        right: 15px;
+        padding: 0 15px;
+    }
+    
+    .call-float {
+        bottom: 95px;
+    }
+    
+    .instagram-float {
+        bottom: 150px;
+    }
+    
+    .float-text {
+        font-size: 14px;
+        margin-left: 8px;
+    }
 }
 
 /* Responsive */
@@ -1133,17 +1220,5 @@ textarea.form-control {
     
     .contact-form-card {
         padding: 30px 20px;
-    }
-    
-    .whatsapp-float,
-    .call-float {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-        right: 20px;
-    }
-    
-    .call-float {
-        bottom: 90px;
     }
 }

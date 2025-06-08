@@ -1,15 +1,15 @@
 /* Global Styles */
 :root {
-    --primary-color: #3F4448;
-    --primary-dark: #2A2E32;
-    --primary-light: #5A6166;
-    --secondary-color: #4A4F54;
-    --text-color: #2C2F33;
-    --light-text: #6B7074;
+    --primary-color: #4CAF50;
+    --primary-dark: #388E3C;
+    --primary-light: #A5D6A7;
+    --secondary-color: #2E7D32;
+    --text-color: #333333;
+    --light-text: #666666;
     --white: #FFFFFF;
-    --light-bg: #F5F6F7;
+    --light-bg: #F8F9FA;
     --border-radius: 10px;
-    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     --transition: all 0.3s ease;
 }
 
@@ -203,7 +203,7 @@ a:hover {
 
 /* Video Hero Section */
 .video-hero {
-    background-color: #212529;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9) 0%, rgba(46, 125, 50, 0.9) 100%), url('https://sineklikci.net/wp-content/uploads/2025/04/modern-sineklik-hero.jpg') no-repeat center center/cover;
     color: var(--white);
     padding: 180px 0 100px;
     position: relative;
@@ -433,7 +433,7 @@ a:hover {
 
 /* CTA Section */
 .video-cta {
-    background: linear-gradient(135deg, rgba(63, 68, 72, 0.9) 0%, rgba(42, 46, 50, 0.9) 100%), url('https://sineklikci.net/wp-content/uploads/2025/04/modern-sineklik-hero.jpg') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.9) 0%, rgba(46, 125, 50, 0.9) 100%), url('https://sineklikci.net/wp-content/uploads/2025/04/modern-sineklik-hero.jpg') no-repeat center center/cover;
     color: var(--white);
     padding: 80px 0;
     text-align: center;
@@ -565,10 +565,11 @@ a:hover {
 
 /* Float Buttons */
 .whatsapp-float,
-.call-float {
+.call-float,
+.instagram-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
+    width: auto;
+    height: 50px;
     bottom: 40px;
     right: 40px;
     background-color: #25d366;
@@ -582,17 +583,57 @@ a:hover {
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    padding: 0 20px;
+    text-decoration: none;
 }
 
 .call-float {
-    bottom: 110px;
+    bottom: 100px;
     background-color: var(--primary-color);
 }
 
+.instagram-float {
+    bottom: 160px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.float-text {
+    margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+}
+
 .whatsapp-float:hover,
-.call-float:hover {
-    transform: scale(1.1);
+.call-float:hover,
+.instagram-float:hover {
+    transform: scale(1.05);
     color: var(--white);
+}
+
+@media (max-width: 767px) {
+    .whatsapp-float,
+    .call-float,
+    .instagram-float {
+        width: auto;
+        height: 45px;
+        font-size: 18px;
+        right: 15px;
+        padding: 0 15px;
+    }
+    
+    .call-float {
+        bottom: 95px;
+    }
+    
+    .instagram-float {
+        bottom: 150px;
+    }
+    
+    .float-text {
+        font-size: 14px;
+        margin-left: 8px;
+    }
 }
 
 /* Responsive */
@@ -655,17 +696,5 @@ a:hover {
     
     .video-cta-title {
         font-size: 1.8rem;
-    }
-    
-    .whatsapp-float,
-    .call-float {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-        right: 20px;
-    }
-    
-    .call-float {
-        bottom: 90px;
     }
 }
